@@ -1,0 +1,104 @@
+create table isha_student5(
+    recid integer,
+    name varchar(50)
+);
+
+insert into isha_student5 
+values
+(1,"isha"),
+(2,"tanvi"),
+(3,"darshan"),
+(4,"parasar"),
+(5,"apexa");
+
+SELECT * from isha_student5;
+
+create table isha_studentdetail5(
+recid integer,
+studentid integer,
+standard integer,
+flagsex varchar(50)
+);
+
+insert into isha_studentdetail5
+values
+(1,1,10,"female"),
+(2,2,11,"female"),
+(3,3,12,"male"),
+(4,4,13,"male"),
+(5,5,14,"female");
+
+select * from isha_studentdetail5;
+
+
+
+create table isha_studentpresent5(
+recid integer,
+studentid integer,
+month varchar(50),
+present integer
+)
+
+insert into isha_studentpresent5
+values
+(1,1,"jan",21),
+(2,2,"feb",22),
+(3,3,"mar",23),
+(4,4,"apr",24),
+(5,5,"may",25);
+
+select * from isha_studentpresent5;
+
+
+create table isha_studenthours5(
+recid integer,
+studentid integer,
+datex date ,
+hours integer
+);
+
+insert into isha_studenthours5
+values
+(1,1,"2011-01-11",10),
+(2,2,"2011-01-12",11),
+(3,3,"2011-01-13",12),
+(4,4,"2011-01-14",13),
+(5,5,"2011-01-15",14);
+
+select * from isha_studenthours5;
+
+
+create table isha_product5(
+recid integer;
+name varchar(50)
+)
+
+insert into isha_product5
+values
+(1,"maggie"),
+(2,"pasta"),
+(3,"noodles"),
+(4,"manchurian"),
+(5,"paneer");
+
+select * from isha_product5;
+
+create table isha_productprice5(
+recid integer,
+productid integer,
+code integer,
+effdt date,
+price integer
+)
+
+insert into isha_productprice5
+values
+(1,1,123,"2012-11-01",10000),
+(2,2,124,"2012-11-02",20000),
+(3,3,125,"2012-11-03",30000),
+(4,4,126,"2012-11-04",40000),
+(5,5,127,"2012-11-05",50000);
+
+select * from isha_productprice5;
+
+select a.name,b.month,b.present from isha_student5 a,isha_studentpresent5 where a.recid=b.studentid 
