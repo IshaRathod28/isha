@@ -112,3 +112,212 @@ Assignment 5  ---- List information of the product having "Maximum Price" withi
 select b.recid , a.pname   FROM MAULIK_PRO a INNER JOIN MAULIK_PROPRICE b      on a.recid = b.recid  WHERE Effective_Date BETWEEN "2023-04-04" and "2023-08-04" and max(price)        select * from MAULIK_PROPRICE---------------------------------------------------------   Tables Used:=       -   student  (recid, name)    -   studentdetail (recid, studentid, standard, flagsex)    -   studentpresent (recid, studentid, month, present)    -   studenthours (recid, studentid, datex, hours)    -   product (recid, name)    -   productprice (recid, productid, code, effdt, price)Q-1 Write a query which will print name of each student, and his or her attendance report for current month.Fields : Name, Attendance Report for Current Month    Under "Attendance Report for Current Month" column:        if 'studentpresent.present' is less than or equal to 7 print "Poor",        if 'studentpresent.present' is more than 7 and less than or equals 15 print "Good",        if 'studentpresent.present' is more than 15 and less than or equals 20 print "Better",        if 'studentpresent.present' is more than 20 print "Best".----SELECT a.name , b.presentCASEWHEN b.present < 7 OR b.present=7  AND b.months = "Jan" THEN 'POOR'WHEN b.present <=15 OR b.present > 7 AND b.monhts = 'Jan' THEN 'GOOD'WHEN b.present <=20 OR b.present > 15 AND b.months = 'Jan' THEN 'BETTER'WHEN b.present > 20 AND b.months = 'Jan' THEN 'BEST'END as 'Report'FROM MAULIK_STUDENT aJOIN MAU_STU_PRESENT b---------With Current Month    SELECT a.name , b.present ,CASEWHEN b.present < 7 OR b.present=7     THEN 'POOR'WHEN b.present <=15 OR b.present > 7   THEN 'GOOD'WHEN b.present <=20 OR b.present > 15    THEN 'BETTER'WHEN b.present > 20    THEN 'BEST'END as 'Report'FROM MAULIK_STUDENT aJOIN MAU_STU_PRESENT bwhere b.months  = MONTH(CURDATE()) Q-2 Write a query to print student name, total number of hours for Jan, Feb, March month. Information for each student should be printed in a single row.    Fields : Name, Working Hours for Jan, Working Hours for Feb, Working Hours for March    See following example:    Name        Working Hours for Jan   Working Hours for Feb   Working Hours for March    Minesh      80          70          90    Reena       70          80          90select a.name ,sum(case when MONTH(b.datex) = 1  THEN  (b.hours) END) as "Total hours for January" ,sum(case when MONTH(b.datex) = 2 THEN sum(b.hours) END) as "Total Hours For February",sum(case when MONTH(b.datex) = 3 THEN sum(b.hours) END) as "Total Hours For March"from MAULIK_STUDENT a JOIN MAU_STU_HOURS bon a.recid = b.recid group by a.nameselect name,sum(case when 1=month(datex) then hoursend)as 'Working Hours for jan',sum(case when 2=month(datex) then hoursend) as 'Working Hours for feb',sum(case when 3=month(datex) then hoursend ) as 'Working Hours for march', a.`recid` from MAULIK_STUDENT binner join MAU_STU_HOURS a on b.recid=a.recid group by name;Q-3 Print information for the student having name like "Mira", "Kabir", "Om", "Manas"    Fields: Name, Standard    select a.name , b.standard from MAULIK_STUDENT a  NATURAL JOIN MAULIK_STUDENT_DETAILS b where ((name like ("%maulik%")) or (name like ("%Prince%")) or(name like ("%Aulik%")))Q-4 Print information for the student having name other than "Mira", "Kabir", "Om", "Manas"    Fields: Name, Standard       select a.name , b.standard from MAULIK_STUDENT a  NATURAL JOIN MAULIK_STUDENT_DETAILS b where ((name not like ("%maulik%")) AND (name not like ("%Prince%")) AND(name not like ("%Aulik%")))Q-5 Print information for the student having presence for Jananuary between 20 to 25.    Fields: Name, Standard, Present    select a.name , b.standard , c.present from MAULIK_STUDENT a NATURAL JOIN MAULIK_STUDENT_DETAILS b NATURAL JOIN MAU_STU_PRESENT c NATURAL JOIN  MAU_STU_HOURS d where d.datex BETWEEN "2022-01-01" and "2023-02-01"   Q-6 Print information for the student having charcter "r" at the third position of their name.    Fields: Name, Standard    Eg: It should print information for "Mira", "Gira" etc.    select a.name , b.standard from MAULIK_STUDENT a NATURAL JOIN MAULIK_STUDENT_DETAILS b where name like "___l%"Q-7 Print information for the student having "bhai" in their name.    Fields: Name, Standard     select a.name , b.standard from MAULIK_STUDENT a NATURAL JOIN MAULIK_STUDENT_DETAILS b where name like "%AU%"   Q-8 Print information for the student who do not have any presence in the college.    Fields: Name, Standard    SELECT a.name , b.standard    from MAULIK_STUDENT a    NATURAL JOIN MAULIK_STUDENT_DETAILS b    NATURAL JOIN MAU_STU_PRESENT c    where c.present = 20Q-9 Write a query which will print name of each student, and his or her attendance report for current month.    Fields : Name, Attendance Report for Current Month    In "Attendance Report for Current Month" column    if student has presence for that month then print "Present"    else print "Not Present".SELECT a.name , b.present ,CASEWHEN b.present >5  AND b.months = "Jan" THEN 'Present' else 'not present'END as 'Attendance Report'FROM MAULIK_STUDENT aJOIN MAU_STU_PRESENT b-- WHEN b.present <=15 OR b.present > 7 AND b.monhts = 'Jan' THEN 'GOOD'-- WHEN b.present <=20 OR b.present > 15 AND b.months = 'Jan' THEN 'BETTER'-- WHEN b.present > 20 AND b.months = 'Jan' THEN 'BEST'Q-10 Execute following queries and evaluate the output by giving appropriate reason.    SELECT STRCMP('text', 'text2');  ---> (-1)  -- String 1 Is Less Than String 2    SELECT STRCMP('text2', 'text');  --->   1  String1 to Greater than String 2    SELECT STRCMP('text', 'text');   --->   0  --- Both Strings Are EqualQ-11 Print the student information having average presence (in percentage) for Jan, Feb and March between 60 to 75.    Fields: Name, Standard, Present    select a.name , b.standard , sum(c.present) AS 'Present'    FROM MAULIK_STUDENT as a    NATURAL JOIN MAULIK_STUDENT_DETAILS as b    NATURAL JOIN MAU_STU_PRESENT  as c    group by a.name having sum(c.present)*(100/400)    BETWEEN 40 and 60Q-12 List information of the product having "Maximum Price" within date range 01-01-2006 to 15-01-2006  select a.recid , a.pname , max(b.price)  FROM MAULIK_PRO a INNER JOIN MAULIK_PROPRICE b  WHERE Effective_Date BETWEEN "2023-04-04" and "2023-08-04"----Assignment 6-   Tables Used:=       -   student  (recid, name)    -   studentdetail (recid, studentid, standard, flagsex)    -   studentpresent (recid, studentid, month, present)    -   studenthours (recid, studentid, datex, hours)    -   product (recid, name)    -   productprice (recid, productid, code, effdt, price)-   Write queries for following requirements:Q-1 Print total number of boys and girls within a single record.    Fields : Boys, Girls    Required Output:    ================    Boys    Girls    5   3    selectcount(case when sex ='Male' then studentid end) as Boys,count(case when sex ='Female' then studentid end)as Girlsfrom MAULIK_STUDENT_DETAILS;Q-2 Find total number of Hours for Boys and Girls.    Fields : Gender, Present(Hrs)    Required Output:    ================    Gender  Present(Hrs)    Boys    100    Girls   120  select a.sex , sum(case when a.sex = 'Male' then b.hours when a.sex = "Female" then b.hours end) as 'Total Hours' from MAULIK_STUDENT_DETAILS a inner join MAU_STU_HOURS b on a.recid = b.recidQ-3 Find all latest prices for each code for each product.    Fields : Product Name, Code, Date, Price    Required Output:    ================    Product Name    Code    Date        Price    Computer    COMP    2007-01-01  Rs. 24,000/-   Assignment - 7Q-1 Write a query which will output 123,456.78(as string datatype) for the input value of 123456.77912.---SELECT FORMAT(123456.77912 , 2)Q-2 What will be the output of following query : (Explain the result)    SELECT INSERT("newyork", 4, 4, "jercy");    --    newjercyQ-3 Write a query to find position of letter 'd' in the string 'abcdefgh'.SELECT LOCATE('d' ,  'abcdefgh' ) as 'Position' ;Q-4 Write a query which will output "hello world" for input string "Hello World".SELECT LOWER('Hello World');Q-5 Write a query to find 3 characters from the left of any given string.SELECT LEFT('Helloworld' , 3)Q-6 Write a query to find 3 characters from the right of any given string.SELECT RiGHT('Helloworld' , 3)Q-7 Write a query which will return length of any given string.SELECT CHARACTER_LENGTH('MAULIK')Q-8 Write a query which will output "------abcd" for input string "abcd".SELECT CONCAT('-------' , 'abcd')Q-9 Write a query which will output "abcd......" for input string "abcd".SELECT CONCAT('abcd' , '........')Q-10 Write a query which will output "abcd  " for input string "  abcd  ".SELECT CONCAT('  ','abcd  ');Q-11 Write a query which will output "  abcd" for input string "  abcd  ".SELECT CONCAT(' abcd', '  ');Q-12 Write a query which will output "is" for input string "The weather is very nice.".SELECT SUBSTRING('The weather is very nice.', 12, 3)Q-13 Write a query which will output "hellohellohello" for input string "hello".SELECT REPEAT('Hello', 3);Q-14 Write a query which will output ".ecin yrev si rehtaew ehT" for input string " ".SELECT REVERSE('The weather is very nice.');Q-15 Explain the use of function SOUNDEX().  
 
 Q-16 Write a query which will output "is very nice." for input string "The weather is very nice.".Q-17 Explain the use of TRIM function.
+
+
+
+
+Problem:
+
+You’d like to combine data from more than two tables using only one SELECT statement.
+
+Example:
+
+There are four tables in our database: student, teacher, subject, and learning.
+
+The student table contains data in the following columns: id, first_name, and last_name.
+
+
+
+id
+first_name
+last_name
+
+
+1
+Tom
+Miller
+
+2
+John
+Spring
+
+3
+Lisa
+Williams
+
+4
+Ellie
+Barker
+
+5
+James
+Moore
+
+
+
+The teacher table contains data in the following columns: id, first_name, last_name, and subject.
+
+
+
+id
+first_name
+last_name
+
+
+1
+Milan
+Smith
+
+2
+Charles
+Davis
+
+3
+Mark
+Moore
+
+
+
+The subject table contains data in the following columns: id and name.
+
+
+
+id
+name
+
+
+1
+English
+
+2
+Art
+
+3
+Music
+
+
+
+Finally, the learning table contains data in the following columns: id, mark, subject_id, student_id, and teacher_id.
+
+
+
+id
+mark
+subject_id
+student_id
+teacher_id
+
+
+1
+4
+1
+2
+1
+
+2
+5
+2
+3
+2
+
+3
+4
+3
+1
+3
+
+4
+3
+2
+1
+2
+
+5
+2
+3
+5
+3
+
+6
+3
+3
+4
+2
+
+
+
+We want to know which students are studying English, music, and art, as well as which teachers are instructing these classes. Select the course subject, the last name of the student taking that course, and the last name of the teacher delivering that course.
+
+Solution:
+
+Use multiple JOINs in your query:
+
+
+
+SELECT l.name AS subject_name,    t.last_name AS
+student_last_name,  st.last_name AS teacher_last_nameFROM
+learning AS l JOIN subject s ON
+l.subject_id=s.idJOIN student st ON 
+l.student_id=st.idJOIN teacher t ON l.teacher_id=t.id;
+
+
+
+This query returns records with the name of the course subject and the last names of the students and teachers:
+
+
+
+subject_name
+s_last_name
+t_last_name
+
+
+Music
+Moore
+Miller
+
+Art
+Davis
+Miller
+
+English
+Smith
+Spring
+
+Art
+Davis
+Williams
+
+Music
+Davis
+Barker
+
+Music
+Moore
+Moore
+
+
+
+This data comes from three tables, so we have to join all those tables to get the information we seek.
+
+Discussion:
+
+If you’d like to combine data stored in multiple (more than two) tables, you should use the JOIN operator multiple times. First, you join two tables as you normally would (using JOIN, LEFT JOIN, RIGHT JOIN, or FULL JOIN, as appropriate). The JOIN operation creates a “virtual table” that stores combined data from the two tables. In our example, the result table is a combination of the learning and subject tables.
+
+The next step is to join this result table to the third table (in our example, student). This is like a regular JOIN: you join the “virtual table” and the third table with an appropriate condition. This condition should generally include one or more columns from the additional table (student) and one or more columns from the “virtual table”. In our example, we reference the student table in the second JOIN condition.
+
+At this point, we have a new virtual table with data from three tables. The last step is to add data from the fourth table (in our example, teacher). and join using the key from these tables (in our example, id from the teacher table and teacher_id from the learning table).
+
+If you have to join another table, you can use another JOIN operator with an appropriate condition in the ON clause. In theory, you can join as many tables as you want.
+ 
+
+
+
+
+
+
+ This is an example of joining 3 tables .. you need to perform 2-3 examples of joining 5-6 tables 
+ 
+ [05:35 PM] Jesal Desai
+    Take an example of banking system and you yourself create a query which needs to join 5-6 tables ... Think  about it and everyone's question should be different . 
+​[05:35 PM] Jesal Desai
+    You can take any  other example also apart from banking 
