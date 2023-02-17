@@ -1,0 +1,1 @@
+delimiter //CREATE PROCEDURE maulik ()BEGIN   create table m_temp select distinct * from mau_details ;drop table mau_details ;alter table m_temp rename to mau_details ;END //delimiter ;select * from mau_details ;call maulik();
