@@ -1,0 +1,423 @@
+
+Displaylist
+
+
+import Employeelist from "./Employeelist";
+// import State from "./State";
+import React, { useState } from "react";
+import Empform from "./Empform";
+function Displaylist(){
+    const [show, setShow] = useState(true);
+    function State(){
+        const [show, setShow] = useState(true);
+      
+        return (<></>
+        )
+    }
+   
+    
+    return(
+        <div>
+            <div className="Emplist">
+                    EMPLOYEE LIST OF THE COMPANY
+            </div>
+            <div className="Elist" align='center'>
+             <table>
+                <tr>
+                    <th> First_Name</th>
+                    <th>Last_Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Skills</th>
+                </tr>
+                <tr>
+                    <td>
+                    <Employeelist First_Name="Isha"/>
+                    </td>
+                    <td>
+                    <Employeelist Last_Name="Rathod"/>
+                    </td>
+                    <td>
+                    <Employeelist Email="fgyd@gmail.com"/>
+                    </td>
+                    <td>
+                    <Employeelist Gender="Female"/>
+                    </td>
+                    <td>
+                    <Employeelist Department="Full Stack"/>
+                    </td>
+                    <td>
+                    <Employeelist Skills="HTML"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <Employeelist First_Name="Maulik"/>
+                    </td>
+                    <td>
+                    <Employeelist Last_Name="Prajapati"/>
+                    </td>
+                    <td>
+                    <Employeelist Email="fgfdd@gmail.com"/>
+                    </td>
+                    <td>
+                    <Employeelist Gender="male"/>
+                    </td>
+                    <td>
+                    <Employeelist Department="Full Stack"/>
+                    </td>
+                    <td>
+                    <Employeelist Skills="React JS"/>
+                    </td>
+                </tr>
+                <tr>
+                <td>
+                    <Employeelist First_Name="Prince"/>
+                    </td>
+                    <td>
+                    <Employeelist Last_Name="Kumbhani"/>
+                    </td>
+                    <td>
+                    <Employeelist Email="pgfdd@gmail.com"/>
+                    </td>
+                    <td>
+                    <Employeelist Gender="male"/>
+                    </td>
+                    <td>
+                    <Employeelist Department="Full Stack"/>
+                    </td>
+                    <td>
+                    <Employeelist Skills="Node JS"/>
+                    </td>
+                </tr>
+                <tr>
+                <td>
+                    <Employeelist First_Name="Adnan"/>
+                    </td>
+                    <td>
+                    <Employeelist Last_Name="Samol"/>
+                    </td>
+                    <td>
+                    <Employeelist Email="agfdd@gmail.com"/>
+                    </td>
+                    <td>
+                    <Employeelist Gender="male"/>
+                    </td>
+                    <td>
+                    <Employeelist Department="Full Stack"/>
+                    </td>
+                    <td>
+                    <Employeelist Skills="All"/>
+                    </td>
+                </tr>
+                <tr>
+                <td>
+                    <Employeelist First_Name="Jaydev"/>
+                    </td>
+                    <td>
+                    <Employeelist Last_Name="Solanki"/>
+                    </td>
+                    <td>
+                    <Employeelist Email="jgfdd@gmail.com"/>
+                    </td>
+                    <td>
+                    <Employeelist Gender="male"/>
+                    </td>
+                    <td>
+                    <Employeelist Department="PHP"/>
+                    </td>
+                    <td>
+                    <Employeelist Skills="PHP"/>
+                    </td>
+                </tr>
+                <tr>
+                <td>
+                    <Employeelist First_Name="Shubham"/>
+                    </td>
+                    <td>
+                    <Employeelist Last_Name="Talati"/>
+                    </td>
+                    <td>
+                    <Employeelist Email="sgfdd@gmail.com"/>
+                    </td>
+                    <td>
+                    <Employeelist Gender="male"/>
+                    </td>
+                    <td>
+                    <Employeelist Department="Full Stack"/>
+                    </td>
+                    <td>
+                    <Employeelist Skills="MongoDB"/>
+                    </td>
+                </tr>   
+            </table>
+            <div>
+           
+            {/* <button onClick={() => setShow(!show)}>Show / Hide</button> */}
+            
+            </div>
+            <div className="adem" >
+                <button className="ad" onClick={() => setShow(!show)} >
+                    Add Employee
+                </button>
+                {show ? <div><Empform/></div> : null}
+            </div>
+            </div> 
+            <div>
+               {State()}
+            </div>
+        </div>
+        
+    )
+}
+
+export default Displaylist;
+
+
+empform
+
+function Empform(){
+    return(
+        <div>
+            <form>
+                <div>
+                <label className="label">First_Name : </label>
+                <input type="text" className="input"></input>
+                </div>
+                <div>
+                <label className="label">Last_Name : </label>
+                <input type="text" className="input"></input>
+                </div>
+                <div>
+                <label className="label">Email : </label>
+                <input type="text" className="input"></input>
+                </div>
+                <div>
+                <label className="label">Gender : </label>
+                <input type="radio" name="gender"></input>
+                <label>Female</label>
+                <br></br>
+                <input type="radio" name="gender"></input>
+                <label>male</label>
+                </div>
+                <div>
+                <label className="label">Phone Number : </label>
+                <input type="text" className="input"></input>
+                </div>
+                <div>
+                    <label>
+                        Department :  
+                    </label>
+                    <select className="dep">
+                        <option name="department" className="dept">PHP</option>
+                        <option name="department" className="dept">Full Stack</option>
+                        <option name="department" className="dept">Node JS</option>
+                        <option name="department" className="dept">React JS</option>
+                        <option name="department" className="dept">Dot Net</option>
+                    </select>
+                </div>
+                <div>
+                <label className="label">Skills : </label>
+                <input type="text" className="input"></input>
+                </div>
+                <div>
+                    <input type="checkbox" name="skills"></input>
+                    <label>Programming</label>
+                    <br></br>
+                    <input type="checkbox" name="skills"></input>
+                    <label>Communication</label>
+                    <br></br>
+                    <input type="checkbox" name="skills"></input>
+                    <label>Finance</label>
+                    <br></br>
+                    <input type="checkbox" name="skills"></input>
+                    <label> Recruitment</label>
+                    <br></br>
+                    <input type="checkbox" name="skills"></input>
+                    <label> Optimization</label>
+                    <br></br>
+                    <input type="checkbox" name="skills"></input>
+                    <label> App Development</label>
+                    <br></br>
+                    <input type="checkbox" name="skills"></input>
+                    <label>Frontend Technology</label>
+                    <br></br>
+                    <input type="checkbox" name="skills"></input>
+                    <label> Backend Technology</label>
+                    
+                </div>
+                <div>
+                    <label>About : </label>
+                    <input type="textarea" className="input"></input>
+                </div>
+            </form>
+        </div>
+        
+    )
+}
+export default Empform;
+
+employeelist
+
+function Employeelist(props){
+    return(
+    
+    <><div >
+                {props.First_Name}
+                {props.Last_Name}
+                {props.Email}
+                {props.Gender}
+                {props.Department}
+                {props.Skills}
+    </div>
+   
+    </>
+    )
+}
+
+export default Employeelist;
+
+
+
+
+state.js
+
+import React, { useState } from "react";
+import Empform from "./Empform";
+
+const State = () => {
+  const [show, setShow] = useState(true);
+
+  return (
+    <>
+      {show ? <div><Empform/></div> : null}
+      <button onClick={() => setShow(!show)}>Show / Hide</button>
+    </>
+  );
+};
+
+export default State;
+
+app.js
+
+import './App.css';
+import Displaylist from './component/Displaylist';
+
+import State from './component/State';
+
+function App() {
+  
+  return (
+    <div>
+    <div>
+    <Displaylist/>
+    </div>  
+    {/* <div>
+    <State/>
+    </div> */}
+  </div>
+  );
+}
+
+export default App;
+
+
+app.css
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+table,th,tr,td{
+  border: 5px solid black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: larger;
+}
+
+.Emplist{
+  padding: 50px;
+    background-color: #070707;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    font-style: italic;
+    text-shadow: -3px -1px 1px rgb(177 112 112 / 70%);
+    color: white;
+
+}
+.Elist{
+ padding: 100px;
+
+}
+table{
+  background-color: rgb(232, 149, 165);
+  width: -webkit-fill-available;
+  height: 700px;
+
+}
+.adem{
+  margin-top:100px;
+  width: -webkit-fill-available;
+  height: 100px;
+  
+}
+.ad{
+  font-size: xx-large;
+  font-weight:900;
+  border: 10px solid black;
+  margin-bottom: 100px;
+
+}
+.label{
+  width:100px;
+ 
+  display: table-row-group;
+}
+.input{
+  width:  -webkit-fill-available;
+  border:2px solid black;
+}
+.dep{
+  width: 600px;
+}
+body{
+  background-color: aquamarine;
+}
+
+index.html
