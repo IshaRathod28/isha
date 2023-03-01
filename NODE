@@ -1,0 +1,51 @@
+[11:21 AM] Padmavathi Bindulal
+    
+
+Introduction to Node JS
+1.      What is Node.js?
+
+
+2.       Why Node.js?
+
+
+3.       Installing NodeJS
+
+
+4.       Node in-built packages (buffer, fs, http, os, path, util, url)
+
+
+5.       Node Modules
+
+
+6.       Node Package Manager (NPM)
+
+
+7.       Local and Global Packages
+
+Node JS basics
+1.       Variables, comments, data types, operators, constants
+
+
+2.      Conditional Statements (If and Switch Statements)
+
+
+3.      Loops
+
+
+4.      Array & JSON objects
+
+
+5.      Javascript functions - String, Numbers, Array, Loop, Date, Math, Regular Expression
+
+
+File System Module 
+1.      Get Input from Users
+
+ 
+2.      Pass Multiple Arguments with Yargs
+
+ 
+3.      File System Module
+
+ 
+4.      Operations associated with File System Module & JSON Data
