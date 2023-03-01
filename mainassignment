@@ -1,0 +1,966 @@
+EDITEMPLOYEE
+
+
+import React from "react";
+
+const EditEmployee = ({
+  tableData,
+  Cancel,
+  settableData,
+  editData,
+  seteditData,
+}) => {
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    seteditData({ ...editData, [name]: value });
+  };
+
+  const SaveEmployee = (e) => {
+    e.preventDefault();
+    let filterData = tableData.filter((e) => e.id !== editData.id);
+    let updateData = [...filterData, { ...editData }].sort((c, d) =>
+      c.id > d.id ? 1 : -1
+    );
+    settableData(updateData);
+    // const delData = tableData.filter((tbd) => {
+    //   return editData.id !== tbd.id;
+    // });
+    // setTableData(delData);
+  };
+  return (
+    <>
+      <tr>
+        <td>
+          <input
+            type="text"
+            name="Firstname"
+            placeholder="Please enter your first name"
+            onChange={handleEditChange}
+            value={editData.Firstname}
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            name="LastName"
+            placeholder="Please enter your last name"
+            onChange={handleEditChange}
+            value={editData.LastName}
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            name="Email"
+            placeholder="please enter your email"
+            onChange={handleEditChange}
+            value={editData.Email}
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            name="phoneNumber"
+            required
+            placeholder="please enter your phone number"
+            onChange={handleEditChange}
+            value={editData.phoneNumber}
+          />
+        </td>
+        <td>
+        <input
+            type="text"
+            name="Gender"
+            placeholder="Please enter your Gender..."
+            onChange={handleEditChange}
+            value={editData.Gender}
+          />
+        </td>
+
+        <td>
+        <input
+            type="text"
+            name="Department"
+            placeholder="Please enter your department"
+            onChange={handleEditChange}
+            value={editData.Department}
+          />
+        </td>
+
+        <td>
+        <input
+            type="text"
+            name="Skills"
+            placeholder="Please enter your Skills"
+            onChange={handleEditChange}
+            value={editData.Skills}
+          />
+        </td>
+
+        <td>
+        <input
+            type="text"
+            name="About"
+            placeholder="Please enter something about you..."
+            onChange={handleEditChange}
+            value={editData.About}
+          />
+        </td>
+        <td>
+          <button type="submit" onClick={SaveEmployee}>
+           SUBMIT
+          </button>
+          <button  type="button" onClick={Cancel}>
+           CANCEL
+          </button>
+        </td>
+      </tr>
+
+      {/* <form>
+      <input
+            type="text"
+            name="Firstname"
+            placeholder="Please enter your first name"
+            onChange={handleEditChange}
+            value={a.Firstname}
+          />
+          <input
+            type="text"
+            name="LastName"
+            placeholder="Please enter your last name"
+            onChange={handleEditChange}
+            value={a.LastName}
+          />
+           <input
+            type="text"
+            name="Email"
+            placeholder="please enter your email"
+            onChange={handleEditChange}
+            value={a.Email}
+          />
+           <input
+            type="text"
+            name="phoneNumber"
+            required
+            placeholder="please enter your phone number"
+            onChange={handleEditChange}
+            value={a.phoneNumber}
+          />
+          <input
+            type="text"
+            name="Department"
+            placeholder="Please enter your department"
+            onChange={handleEditChange}
+            value={a.Department}
+          />
+          <input
+            type="text"
+            name="Skills"
+            placeholder="Please enter your Skills"
+            onChange={handleEditChange}
+            value={a.Skills}
+          />
+          <input
+            type="text"
+            name="About"
+            placeholder="Please enter something about you..."
+            onChange={handleEditChange}
+            value={a.About}
+          />
+          <button type="submit" onClick={SaveEmployee}>
+           SUBMIT
+          </button>
+          <button  type="button" onClick={Cancel}>
+           CANCEL
+          </button>
+
+
+      </form> */}
+    </>
+  );
+};
+
+export default EditEmployee;
+
+
+
+EDITFORMDATA
+
+import { employee_data } from "./EmployeeData";
+const EditFormData = ({
+    tableData,
+    Cancel,
+    settableData,
+    editData,
+    seteditData,
+  }) => {
+    const handleEditChange = (e) => {
+      const { name, value } = e.target;
+      seteditData({ ...editData, [name]: value });
+    };
+  
+    const SaveEmployee = (e) => {
+      e.preventDefault();
+      let filterData = tableData.filter((e) => e.id !== editData.id);
+      let updateData = [...filterData, { ...editData }].sort((c, d) =>
+        c.id > d.id ? 1 : -1
+      );
+      settableData(updateData);
+      // const delData = tableData.filter((tbd) => {
+      //   return editData.id !== tbd.id;
+      // });
+      // setTableData(delData);
+    };
+    return (
+      <>
+       <form >
+        <div>
+        <button className="employeedata1">Edit Employee</button>
+        </div>
+          
+        <input
+          type="text"
+          name="Firstname"
+          placeholder="Please enter your first name "
+          onChange={handleEditChange}
+          value={editData.Firstname}
+         
+        />
+        <input
+          type="text"
+          name="LastName"
+          placeholder="Please enter your last name"
+          onChange={handleEditChange}
+          value={editData.LastName}
+        />
+        <input
+          type="text"
+          name="Email"
+          placeholder="Please enter your mail"
+          onChange={handleEditChange}
+          value={editData.Email}
+        />
+        <input
+          type="text"
+          name="phoneNumber"
+          placeholder="Please enter your phone number..."
+          onChange={handleEditChange}
+          value={editData.PhoneNumber}
+        />
+        <input
+          type="text"
+          name="Gender"
+          placeholder="Please enter your Gender"
+          onChange={handleEditChange}
+          value={editData.Gender}
+          
+        />
+        <input
+          type="text"
+          name="Department"
+          placeholder="Please enter your Department"
+          onChange={handleEditChange}
+          value={editData.Department}
+        />
+
+        <input
+          type="text"
+          name="Skills"
+          placeholder="Please enter your skills"
+          onChange={handleEditChange}
+            value={editData.Skills}
+        />
+
+        <input
+          type="text"
+          name="About"
+          placeholder="Please enter something about you dear..."
+          onChange={handleEditChange}
+          value={editData.About}
+        />
+<div>
+<button type="submit" onClick={SaveEmployee} className="employeedata2">
+           SUBMIT
+          </button>
+
+      <button  type="button" onClick={Cancel} className="employeedata2">
+           CANCEL
+          </button>
+      </div>
+         
+
+        <div></div>
+        
+       </form>
+        </>
+    );
+  };
+  
+  export default EditFormData;
+  
+  
+  
+  
+  EMPLOYEEDATA
+  
+  export const employee_data = [
+    {
+        id:"1",
+        Firstname:"Isha",
+        LastName:"Rathod",
+        Email:"dgs@gmail.com",
+        PhoneNumber:"6675475678",
+        Gender:"female",
+        Department:"Full Stack",
+        Skills:"Communication",
+        About:"hieyfwguq"
+    },{
+        id:"2",
+        Firstname:"Maulik",
+        LastName:"Prajapati",
+        Email:"mgs@gmail.com",
+        PhoneNumber:"8675475678",
+        Gender:"male",
+        Department:"Full Stack",
+        Skills:"Programming",
+        About:"hieyfwguqsf"
+    },
+    {
+        id:"3",
+        Firstname:"Prince",
+        LastName:"Kumbhani",
+        Email:"kgs@gmail.com",
+        PhoneNumber:"1675475678",
+        Gender:"male",
+        Department:"Node JS",
+        Skills:"Backend Technology",
+        About:"hieyfwguqvdsgf"
+    },
+    {
+        id:"4",
+        Firstname:"Adnan",
+        LastName:"Samol",
+        Email:"ags@gmail.com",
+        PhoneNumber:"2675475678",
+        Gender:"male",
+        Department:"Full Stack",
+        Skills:"Programming",
+        About:"hieyfwgudfq"
+    },
+    {
+        id:"5",
+        Firstname:"Shubham",
+        LastName:"Talati",
+        Email:"sgs@gmail.com",
+        PhoneNumber:"4675475678",
+        Gender:"male",
+        Department:"Full Stack",
+        Skills:"Optimization",
+        About:"hieyfwguqhgfwe"
+    }
+]
+
+
+EMPLOYEEFILTER
+
+
+import React, { useState } from "react";
+
+const EmployeeFilter = ({searchData, setSearchData}) => {
+
+  const ChangeEmpFilter = (e) => {
+    setSearchData(e.target.value);
+  };
+  return (
+    <>
+      <div>
+        <input className="Search"
+          type="text"
+          placeholder="You can search the employee here..."
+          value={searchData}
+          onChange={ChangeEmpFilter}
+        />
+      </div>
+    </>
+  );
+};
+
+export default EmployeeFilter;
+
+
+EMPLOYEEFORM
+
+import React, { useEffect, useState } from "react";
+
+
+const EmployeeForm = ({ tableData, settableData}) => {
+  
+  const[Firstname , setFirstname] = useState("");
+  const[LastName , setLastname] = useState("");
+  const[Email , setEmail] = useState("");
+  const[phoneNumber , setphoneNumber] = useState("");
+  const[Gender , setGender] = useState("");
+  const[Skills , setSkills] = useState("");
+  const[Department , setDepartment] = useState("");
+  const[About , setAbout] = useState("");
+
+
+ 
+  const newEmployees={
+    Firstname:Firstname,
+    LastName:LastName,
+    Email:Email,
+    phoneNumber:phoneNumber,
+    Gender:Gender,
+    Department:Department,
+    Skills:Skills,
+    About:About,
+}
+  const AddData = (e) => {
+    e.preventDefault();
+    settableData([...tableData, { ...newEmployees, id: Math.random() }]); 
+  };
+
+
+
+ 
+  return (
+    <>
+      <div >
+        <div >
+          <form >
+          <div>
+            <label>First Name</label>
+          <input
+              type="text"
+              name="Firstname"
+              placeholder="Please enter your first name "
+              onChange={(e)=>setFirstname(e.target.value)}
+              value={Firstname}
+            />
+          </div>
+          <div>
+            <label>Last Name</label>
+          <input
+              type="text"
+              name="LastName"
+              placeholder="Please enter your last name"
+              onChange={(e)=>setLastname(e.target.value)}
+              value={LastName}
+            />
+          </div>
+          <div>
+            <label>Email</label>
+          <input
+              type="text"
+              name="Email"
+              placeholder="Please enter your mail"
+              onChange={(e)=>setEmail(e.target.value)}
+              value={Email}
+            />
+          </div>
+          <div>
+            <label>Phone Number</label>
+          <input
+              type="text"
+              name="phoneNumber"
+              placeholder="Please enter your phone number..."
+              onChange={(e)=>setphoneNumber(e.target.value)}
+              value={phoneNumber}
+            />
+          </div><label>Please select your gender</label>
+          <br></br>
+            <div className="gender">
+              
+              
+              <input
+              type="radio"
+              name="Gender" placeholder="Please enter your Gender"
+              onChange={(e)=>setGender(e.target.value)}
+              value="male"
+            />
+           <label>male</label>
+              
+           
+            <input
+              type="radio"
+              name="Gender"
+             
+              onChange={(e)=>setGender(e.target.value)}
+              value="female"
+            /><label>female</label>
+            
+             
+            </div>
+          
+           <div>
+           <input
+              type="text"
+              name="Department"
+              placeholder="Please enter your Department"
+              onChange={(e)=>setDepartment(e.target.value)}
+              value={Department}
+            />
+           </div>
+            
+            
+
+            <input
+              type="text"
+              name="Skills"
+              placeholder="Please enter your skills"
+              onChange={(e)=>setSkills(e.target.value)}
+              value={Skills}
+            />
+
+            <input
+              type="text"
+              name="About"
+              placeholder="Please enter something about you dear..."
+              onChange={(e)=>setAbout(e.target.value)}
+              value={About}
+            />
+
+
+            <div></div>
+            <button
+              onClick={AddData}
+              type="submit"
+              className="employeedata2"
+            >
+              ADD
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default EmployeeForm;
+
+
+
+import React from "react";
+
+const EmployeePagination = ({ num, setnum, tableData, pagepost }) => {
+  const pagenum = [];
+
+  for (let i = 1; i <= Math.ceil(tableData.length / pagepost); i++) {
+    pagenum.push(i);
+  }
+
+  const changepagenum = (pagenum) => {
+    setnum(pagenum);
+  };
+
+  const PreviousPage = () => {
+    if (num !== 1) {
+      //to restrict going lower than page 1
+      setnum(num - 1);
+    } else {
+      setnum(num);
+    }
+  };
+
+  const NextPage = () => {
+    if (num < 3) {
+      //to restrict going above page 3 as it the last page of the app
+      setnum(num + 1);
+    } else {
+      alert("No further pages");
+    }
+  };
+
+  return (
+    <>
+      <div className="pagediv" align="center">
+        <button className="page"
+          onClick={PreviousPage}
+        >
+          Previous Page
+        </button>
+
+        {pagenum.map((item) => {
+          return (
+            <>
+              <button className="page"
+                key={item.id}
+                onClick={() => changepagenum(item)}
+              >
+                {item}
+              </button>
+            </>
+          );
+        })}
+        <button className="page"
+          onClick={NextPage}
+        >
+          Next Page
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default EmployeePagination;
+
+
+EMPLOYEEREAD
+
+import React from "react";
+import { employee_data } from "./EmployeeData";
+
+const EmployeeRead = ({ employee_data, Edit, Delete }) => {
+  return (
+    <>
+      <tr>
+        <td>{employee_data.Firstname}</td>
+        <td>{employee_data.LastName}</td>
+        <td>{employee_data.Email}</td>
+        <td>{employee_data.Gender}</td>
+        <td>{employee_data.Department}</td>
+        <td>{employee_data.Skills}</td>
+        
+        <td >
+          <button  onClick={() => Edit(employee_data)} >
+            EDIT
+          </button>
+          <button  onClick={() => Delete(employee_data.id)}>
+            DELETE
+          </button>
+        </td>
+      </tr>
+    </>
+  );
+};
+
+export default EmployeeRead;
+
+
+import React, { useState } from "react";
+// import EmployeeDisplay from "./components/EmployeeDisplay";
+import { employee_data } from "./components/EmployeeData";
+import EmployeeForm from "./components/EmployeeForm";
+import EmployeeRead from "./components/EmployeeRead";
+import EditEmployee from "./components/EditEmployee";
+import EmployeePagination from "./components/EmployeePagination";
+import EmployeeFilter from "./components/EmployeeFilter";
+import EditFormData from "./components/EditFormData";
+import './App.css';
+import Editeddd from "./components/Editeddd";
+// import EmployeeAdd from "./components/EmployeeAdd";
+
+function App(){
+  const [tableData, settableData] = useState(employee_data); // input data for table
+    const [toggle, setToggle] = useState(null); //for data ids
+    const [searchData, setSearchData] = useState(""); //for filtering data
+    const [editData, setEditData] = useState({
+      // for editing data
+      Firstname:"",
+      LastName:"",
+      Email:"",
+      phoneNumber:"",
+      Gender:"",
+      Department:"",
+      Skills:"",
+      About:"",
+    });
+    const [ord, setord] = useState("asc"); //for sorting
+    const [num, setnum] = useState(1); // No of pages
+    const [pagepost] = useState(5);
+  
+    const Delete = (del) => {
+      const delData = tableData.filter((tbd) => {
+        return del !== tbd.id;
+      });
+      settableData(delData);
+    };
+  
+    const Edit = (employee_data) => {
+      // for opening the editable row
+      setToggle(employee_data);
+      setEditData(employee_data);
+    };
+  
+    const Cancel = () => {
+      setToggle(null);
+    };
+  
+    const Sort = (sort) => {
+      if (ord === "asc") {
+        const sorted = [
+          ...tableData.sort((c, d) => (c[sort] > d[sort] ? 1 : -1)),
+        ];
+        console.log(sorted);
+        settableData(sorted);
+        setord("desc");
+      } else if (ord === "desc") {
+        const sorted = [
+          ...tableData.sort((c, d) => (c[sort] < d[sort] ? 1 : -1)),
+        ];
+        console.log(sorted);
+        settableData(sorted);
+        setord("asc");
+      }
+    };
+    //for Pagination
+    const lp = num * pagepost;
+    const fp = lp - pagepost;
+    const cd = tableData.slice(fp, lp);
+  
+    return (
+          <>
+            <div>
+              <div >
+                <button className="employeedata" >Employee Data</button>
+                <EmployeeFilter searchData={searchData} setSearchData={setSearchData}/>
+                {/* <Filter search={search} setSearch={setSearch} /> */}
+                <form>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th id="tr" onClick={() => Sort("Firstname")}>
+                        Firstname
+                        </th>
+                        <th id="tr" onClick={() => Sort("LastName")}>
+                        LastName
+                        </th>
+                        <th id="tr" onClick={() => Sort("Email")}>
+                        Email
+                        </th>
+                        {/* <th id="tr" onClick={() => Sort("phoneNumber")}>
+                        phoneNumber
+                        </th> */}
+                        <th id="tr" onClick={() => Sort("Gender")}>
+                        Gender
+                        </th>
+                        <th id="tr" onClick={() => Sort("Department")}>
+                        Department
+                        </th>
+                        <th id="tr" onClick={() => Sort("Skills")}>
+                        Skills
+                        </th>
+      
+                        {/* <th id="tr" onClick={() => Sort("About")}>
+                        About
+                        </th> */}
+                        <th id="tr">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cd
+                        .filter((val) => {
+                          if (searchData === "") {
+                            return val;
+                          } else if (
+                            val.Firstname.toLowerCase().includes(searchData.toLowerCase())
+                          ) {
+                            return val;
+                          }
+                        })
+                        .map((employee_data) => {
+                          return (
+                            <>
+                              {toggle === employee_data ? (
+                                // <EditRow
+                                //   key={employee_data.id}
+                                //   tableData={tableData}
+                                //   setTableData={setTableData}
+                                //   Cancel={Cancel}
+                                //   setEditData={setEditData}
+                                //   editData={editData}
+                                // />
+                                <EditFormData  key={employee_data.id}
+                                tableData={tableData}
+                                settableData={settableData}
+                                Cancel={Cancel}
+                                seteditData={setEditData}
+                                editData={editData} />
+                              ) : (
+                                <EmployeeRead
+                                  key={employee_data.id}
+                                  employee_data={employee_data}
+                                  cd={cd}
+                                  Edit={Edit}
+                                  Delete={Delete}
+                                />
+                              )}
+                            </>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+                </form>
+      
+                <EmployeePagination
+                  num={num}
+                  setnum={setnum}
+                  tableData={tableData}
+                  pagepost={pagepost}
+                />
+      
+                <button className="employeedata1">Add Employee</button>
+                <EmployeeForm tableData={tableData} settableData={settableData}  />
+                {/* <EmployeeAdd employee_data={employee_data}  /> */}
+              </div>
+              <div>
+                <EditFormData  key={employee_data.id}
+                                tableData={tableData}
+                                settableData={settableData}
+                                Cancel={Cancel}
+                                seteditData={setEditData}
+                                editData={editData} />
+
+
+              </div>
+         
+            </div>
+          </>
+        );
+}
+
+export default App;
+
+
+
+
+
+APP.CSS
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.employeedata{
+  border: 5px solid #009688;
+  border-radius: 2px;
+  background-color: #227b3a57;
+  width: -webkit-fill-available;
+  height: 100px;
+  font-size: xx-large;
+  font-weight: bolder;
+  color: #ffffff;
+  text-shadow: 3px -4px 4px #000000;
+}
+.Search{
+  margin-top:10px;
+  border:5px solid black;
+  width: -webkit-fill-available;
+  text-align: center;
+  font-size: larger;
+  margin-bottom: 10px;
+  background-color: rgb(233, 197, 51);
+}
+.Search:hover{
+  background-color: rgb(243, 209, 242);
+}
+body{
+  background-color: rgb(214, 196, 196);
+}
+table,tr,th,td{
+  border:5px solid black;
+  border-collapse: collapse;
+}
+input{
+  width: 60%;
+}
+td{
+  background-color: #c3f0a8;
+}
+th{
+  background-color: rgb(238, 159, 159);
+}
+th:hover{
+  background-color: #a5a3f3;
+}
+td:hover{
+  background-color: #a5d8e6;
+}
+.page{
+  margin-top: 10px;
+  width:fit-content;
+  font-size: large;
+  font-weight: bolder;
+  color: #ffffff;
+  text-shadow: 3px -4px 4px #000000;
+  border: 5px solid #009688;
+  border-radius: 2px;
+  background-color: #227b3a57;
+}
+
+.employeedata1{
+  border: 5px solid #009688;
+  border-radius: 2px;
+  background-color: #227b3a57;
+  width: fit-content;
+  height: 30px;
+  font-size: large;
+  border-radius: 20px;
+  font-weight: bolder;
+  color: #ffffff;
+  text-shadow: 3px -4px 4px #000000;
+}
+
+.employeedata2{
+  border: 5px solid #000000;
+  border-radius: 2px;
+  background-color: #00000057;
+  width: fit-content;
+  height: fit-content;
+  font-size: medium;
+  border-radius: 20px;
+  font-weight: bolder;
+  color: #ffffff;
+  text-shadow: 3px -4px 4px #000000;
+}
+input{
+  width:-webkit-fill-available;
+  background-color:  white;
+  color: black;
+  border:3px solid black;
+  font-weight: bolder;
+}
+label{
+  font-weight: bolder;
+}
+.gender{
+  display: inline-flex;
+  justify-content:center;
+}
