@@ -1,0 +1,1088 @@
+import { employee_data } from "./EmployeeData";
+const EditFormData = ({
+    tableData,
+    Cancel,
+    settableData,
+    editData,
+    seteditData,
+  }) => {
+    const handleEditChange = (e) => {
+      const { name, value } = e.target;
+      seteditData({ ...editData, [name]: value });
+    };
+  
+    const SaveEmployee = (e) => {
+      e.preventDefault();
+      let filterData = tableData.filter((e) => e.id !== editData.id);
+      let updateData = [...filterData, { ...editData }].sort((c, d) =>
+        c.id > d.id ? 1 : -1
+      );
+      settableData(updateData);
+   alert("Your data is updated successfully")
+    };
+    return (
+      <>
+        {/* <button className="employeedata1">Edit Employee</button> */}
+
+       <form >
+        <div>
+          <h1 className="isha">PLEASE FILL THIS FORM TO EDIT THE EXISTING EMPLOYEE</h1>
+        </div>
+       
+        <div>
+        </div>
+        <div>
+        <label>First Name</label>
+        <input
+          type="text"
+          name="Firstname"
+          placeholder="Please enter your first name "
+          onChange={handleEditChange}
+          value={editData.Firstname}
+         
+        />
+        </div>
+          <div>
+          <label>Last Name</label>
+          <input
+          type="text"
+          name="LastName"
+          placeholder="Please enter your last name"
+          onChange={handleEditChange}
+          value={editData.LastName}
+        />
+          </div>
+        
+        <div>
+        <label>Email</label>
+        <input
+          type="text"
+          name="Email"
+          placeholder="Please enter your mail"
+          onChange={handleEditChange}
+          value={editData.Email}
+        />
+        </div>
+        <div><label>Phone Number</label>
+        <input
+          type="text"
+          name="phoneNumber"
+          placeholder="Please enter your phone number..."
+          onChange={handleEditChange}
+          value={editData.PhoneNumber}
+        />
+        </div>
+        <div>
+        <label>Please select your gender</label>
+            <br></br>
+        <input
+          type="text"
+          name="Gender"
+          placeholder="Please enter your Gender"
+          onChange={handleEditChange}
+          value={editData.Gender}/>
+        </div>
+        
+        
+          
+        <div>
+        <label for="dept">Choose a Department:</label>
+        <input
+          type="text"
+          name="Department"
+          placeholder="Please enter your Department"
+          onChange={handleEditChange}
+          value={editData.Department}
+        />
+        </div>
+       <div>
+       <label>Choose a skill:</label>
+       <input
+          type="text"
+          name="Skills"
+          placeholder="Please enter your skills"
+          onChange={handleEditChange}
+            value={editData.Skills}
+        />
+       </div>
+       <div>
+
+       <input
+          type="text"
+          name="About"
+          placeholder="Please enter something about you dear..."
+          onChange={handleEditChange}
+          value={editData.About}
+        />
+       </div>
+
+        
+
+        
+<div>
+      <button type="submit" onClick={SaveEmployee} className="employeedata2">
+          UPDATE
+          </button>
+
+      <button  type="button" onClick={Cancel} className="employeedata2" id="update">
+           CANCEL
+          </button>
+      </div>
+         
+
+        <div></div>
+        
+       </form>
+        </>
+    );
+  };
+  
+  export default EditFormData;
+  
+  
+  
+  
+  
+  
+  export const employee_data = [
+    {
+        id:"1",
+        Firstname:"Isha",
+        LastName:"Rathod",
+        Email:"dgs@gmail.com",
+        PhoneNumber:"6675475678",
+        Gender:"female",
+        Department:"Full Stack",
+        Skills:"Communication",
+        About:"hieyfwguq"
+    },{
+        id:"2",
+        Firstname:"Maulik",
+        LastName:"Prajapati",
+        Email:"mgs@gmail.com",
+        PhoneNumber:"8675475678",
+        Gender:"male",
+        Department:"Full Stack",
+        Skills:"Programming",
+        About:"hieyfwguqsf"
+    },
+    {
+        id:"3",
+        Firstname:"Prince",
+        LastName:"Kumbhani",
+        Email:"kgs@gmail.com",
+        PhoneNumber:"1675475678",
+        Gender:"male",
+        Department:"Node JS",
+        Skills:"Backend Technology",
+        About:"hieyfwguqvdsgf"
+    },
+    {
+        id:"4",
+        Firstname:"Adnan",
+        LastName:"Samol",
+        Email:"ags@gmail.com",
+        PhoneNumber:"2675475678",
+        Gender:"male",
+        Department:"Full Stack",
+        Skills:"Programming",
+        About:"hieyfwgudfq"
+    },
+    {
+        id:"5",
+        Firstname:"Shubham",
+        LastName:"Talati",
+        Email:"sgs@gmail.com",
+        PhoneNumber:"4675475678",
+        Gender:"male",
+        Department:"Full Stack",
+        Skills:"Optimization",
+        About:"hieyfwguqhgfwe"
+    },
+    {
+        id:"6",
+        Firstname:"Poonam",
+        LastName:"Rathod",
+        Email:"dgs@gmail.com",
+        PhoneNumber:"6675475678",
+        Gender:"female",
+        Department:"Full Stack",
+        Skills:"Communication",
+        About:"hieyfwguq"
+    },{
+        id:"7",
+        Firstname:"Divyesh",
+        LastName:"Prajapati",
+        Email:"mgs@gmail.com",
+        PhoneNumber:"8675475678",
+        Gender:"male",
+        Department:"Full Stack",
+        Skills:"Programming",
+        About:"hieyfwguqsf"
+    },
+    {
+        id:"8",
+        Firstname:"Dev",
+        LastName:"Kumbhani",
+        Email:"kgs@gmail.com",
+        PhoneNumber:"1675475678",
+        Gender:"male",
+        Department:"Node JS",
+        Skills:"Backend Technology",
+        About:"hieyfwguqvdsgf"
+    },
+    {
+        id:"9",
+        Firstname:"Jay",
+        LastName:"Patel",
+        Email:"ags@gmail.com",
+        PhoneNumber:"2675475678",
+        Gender:"male",
+        Department:"Full Stack",
+        Skills:"Programming",
+        About:"hieyfwgudfq"
+    },
+    {
+        id:"10",
+        Firstname:"Avinash",
+        LastName:"Dhanani",
+        Email:"sgs@gmail.com",
+        PhoneNumber:"4675475678",
+        Gender:"male",
+        Department:"Full Stack",
+        Skills:"Optimization",
+        About:"hieyfwguqhgfwe"
+    }
+]
+
+
+
+
+
+
+import React, { useState } from "react";
+
+const EmployeeFilter = ({searchData, setSearchData}) => {
+
+  const ChangeEmpFilter = (e) => {
+    setSearchData(e.target.value);
+  };
+  return (
+    <>
+      <div>
+        <input className="Search"
+          type="text"
+          placeholder="You can search the employee here..."
+          value={searchData}
+          onChange={ChangeEmpFilter}
+        />
+      </div>
+    </>
+  );
+};
+
+export default EmployeeFilter;
+
+
+
+import React, { useEffect, useState } from "react";
+
+const EmployeeForm = ({ tableData, settableData }) => {
+  const [Firstname, setFirstname] = useState("");
+  const [LastName, setLastname] = useState("");
+  const [Email, setEmail] = useState("");
+  const [phoneNumber, setphoneNumber] = useState("");
+  const [Gender, setGender] = useState("");
+  
+  const [Department, setDepartment] = useState("");
+  const [About, setAbout] = useState("");
+const[skills , setSkills] = useState([]);
+
+  const addValue = (tempValue) => {
+    const tempSkill = skills;
+    if (skills.includes(tempValue)) {
+      for (let i = 0; i < tempSkill.length; i++) {
+        if (tempSkill[i] == tempValue) {
+          tempSkill.splice(i, 1);
+        }
+      }
+    } else {
+      tempSkill.push(tempValue);
+    }
+    console.log(tempSkill);
+    setSkills(tempSkill);
+  };
+
+  const newEmployees = {
+    Firstname: Firstname,
+    LastName: LastName,
+    Email: Email,
+    phoneNumber: phoneNumber,
+    Gender: Gender,
+    Department: Department,
+    Skills: skills,
+    About: About,
+  };
+  const AddData = (e) => {
+    e.preventDefault();
+    if(!Firstname){
+      alert(" Please enter your firstname");
+    }
+    // if(!Firstname||!LastName||!Email||!phoneNumber||!Gender||!Department||!skills||!About)
+    // return(alert('All fields are mandatory'))
+    else if(!LastName){
+      alert("Please enter  your lastname  ");
+    }
+    else if(!Email){
+      alert("Please enter your Email ");
+    }
+  
+    else if(!phoneNumber){
+      alert(" Please enter your phoneNumber ");
+    }
+    else if(!Gender){
+      alert("Please enter your Gender ");
+    }
+    else if(!Department){
+      alert("Please select any Department ");
+    }
+    else if(!About){
+      alert("Please enter something in about field");
+    }
+    else {
+      settableData([...tableData, { ...newEmployees, id: Math.random() }]);
+      alert("Your data is added successfully")
+    }
+
+   
+  };
+
+  return (
+    <>
+      <div>
+        <div>
+          <form>
+            <div>
+              <h1 className="isha">PLEASE FILL THIS FORM TO ADD THE NEW EMPLOYEE</h1>
+            </div>
+            <div>
+              <label>First Name</label>
+              <input
+                type="text"
+                name="Firstname"
+                placeholder="Please enter your first name "
+                onChange={(e) => setFirstname(e.target.value)}
+                value={Firstname}
+              />
+            </div>
+            <br></br>
+            <div>
+              <label>Last Name</label>
+              <input
+                type="text"
+                name="LastName"
+                placeholder="Please enter your last name"
+                onChange={(e) => setLastname(e.target.value)}
+                value={LastName}
+              />
+            </div>
+            <br></br>
+            <div>
+              <label>Email</label>
+              <input
+                type="text"
+                name="Email"
+                placeholder="Please enter your mail"
+                onChange={(e) => setEmail(e.target.value)}
+                value={Email}
+              />
+            </div>
+            <br></br>
+            <div>
+              <label>Phone Number</label>
+              <input
+                type="text"
+                name="phoneNumber"
+                placeholder="Please enter your phone number..."
+                onChange={(e) => setphoneNumber(e.target.value)}
+                value={phoneNumber}
+              />
+            </div>
+            <br></br>
+            <label>Please select your gender</label>
+            <br></br>
+            <div className="gender">
+              <input
+                type="radio"
+                name="Gender"
+                placeholder="Please enter your Gender"
+                onChange={(e) => setGender(e.target.value)}
+                value="male"
+                id="male"
+              />
+              <label for ="male">male</label>
+
+              <input
+                type="radio"
+                name="Gender"
+                onChange={(e) => setGender(e.target.value)}
+                value="female"
+                id="female"
+              />
+              <label for="female">female</label>
+            </div>
+            <br></br>
+            <div>
+              <label for="dept">Choose a Department:</label>
+
+              <select
+                name="dept"
+                onChange={(e) => setDepartment(e.target.value)}
+                id="dept"
+              >
+                <option value="NodeJs">NodeJs</option>
+                <option value="Full Stack">Full Stack</option>
+                <option value="PHP">PHP</option>
+                <option value=".net">.net</option>
+              </select>
+            </div>
+            <br></br>
+            
+            <div>
+            <label>Choose a skill:</label>
+            <br></br>
+              <input
+                type="checkbox"
+                id="skills"
+                className="skills"
+                name="skills"
+                value="Programming"
+                onChange={() => addValue("Programming")}
+              />
+              <label for="skills">Programming</label>
+              <br></br>
+              <input
+                type="checkbox"
+                id="communication"
+                className="skills"
+                name="communication"
+                value="Communication"
+                onChange={() => addValue("Communication")}
+              />
+              <label for="communication"> Communication</label>
+              <br></br>
+              <input
+                type="checkbox"
+                id="finance"
+                className="skills"
+                name="skills"
+                value="Finance"
+                onChange={() => addValue("Finance")}
+              />
+              <label for="finance">Finance</label>
+              <br></br>
+            </div>
+            <br></br>
+<div>
+  <label>About</label>
+<input
+              type="text"
+              name="About"
+              placeholder="Please enter something about you dear..."
+              onChange={(e) => setAbout(e.target.value)}
+              value={About}
+            />
+</div>
+            
+
+            <div></div>
+            <button onClick={AddData} type="submit" className="employeedata2">
+              ADD
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default EmployeeForm;
+
+
+
+import React from "react";
+
+const EmployeePagination = ({ num, setnum, tableData, pagepost }) => {
+  const pagenum = [];
+
+  for (let i = 1; i <= Math.ceil(tableData.length / pagepost); i++) {
+    pagenum.push(i);
+  }
+
+  const changepagenum = (pagenum) => {
+    setnum(pagenum);
+  };
+
+  const PreviousPage = () => {
+    if (num !== 1) {
+      //to restrict going lower than page 1
+      setnum(num - 1);
+    } else {
+      setnum(num);
+    }
+  };
+
+  const NextPage = () => {
+    if (num < 3) {
+      //to restrict going above page 3 as it the last page of the app
+      setnum(num + 1);
+    } else {
+      alert("No further pages");
+    }
+  };
+
+  return (
+    <>
+      <div className="pagediv" align="center">
+        <button className="page"
+          onClick={PreviousPage}
+        >
+          Previous Page
+        </button>
+
+        {pagenum.map((item) => {
+          return (
+            <>
+              <button className="page"
+                key={item.id}
+                onClick={() => changepagenum(item)}
+              >
+                {item}
+              </button>
+            </>
+          );
+        })}
+        <button className="page"
+          onClick={NextPage}
+        >
+          Next Page
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default EmployeePagination;
+
+
+
+
+import React from "react";
+import { employee_data } from "./EmployeeData";
+
+const EmployeeRead = ({ employee_data, Edit, Delete }) => {
+  return (
+    <>
+      <tr>
+        <td>{employee_data.Firstname}</td>
+        <td>{employee_data.LastName}</td>
+        <td>{employee_data.Email}</td>
+        <td>{employee_data.Gender}</td>
+        <td>{employee_data.Department}</td>
+        <td>{employee_data.Skills}</td>
+        
+        <td >
+          <button   onClick={() => Edit(employee_data)}  className="g">
+            EDIT
+          </button>
+          <button  onClick={() => Delete(employee_data.id)} className="g">
+            DELETE
+          </button>
+        </td>
+      </tr>
+    </>
+  );
+};
+
+export default EmployeeRead;
+
+
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.employeedata{
+  border: 5px solid #009688;
+  border-radius: 2px;
+  background-color: #227b3a57;
+  width: -webkit-fill-available;
+  height: 120px;
+  font-size: xx-large;
+  font-weight: bolder;
+  color: #ffffff;
+  text-shadow: 3px -4px 4px #000000;
+  
+}
+.Search{
+  margin-top:10px;
+  border:5px solid black;
+  width: 100%;
+  text-align: center;
+  font-size: larger;
+  margin-bottom: 10px;
+  background-color: rgb(233, 197, 51);
+}
+.Search:hover{
+  background-color: rgb(243, 209, 242);
+}
+body{
+  background-color: rgb(214, 196, 196);
+}
+table,tr,th,td{
+  border:5px solid black;
+  border-collapse: collapse;
+  margin:10px;
+}
+input{
+  width: 60%;
+}
+td{
+  background-color: #c3f0a8;
+}
+th{
+  background-color: rgb(238, 159, 159);
+}
+th:hover{
+  background-color: #a5a3f3;
+}
+td:hover{
+  background-color: #a5d8e6;
+}
+.page{
+  margin-top: 10px;
+  width:fit-content;
+  font-size: large;
+  font-weight: bolder;
+  color: #ffffff;
+  text-shadow: 3px -4px 4px #000000;
+  border: 5px solid #009688;
+  border-radius: 2px;
+  background-color: #227b3a57;
+}
+
+.employeedata1{
+  border: 5px solid #009688;
+  border-radius: 2px;
+  background-color: #227b3a57;
+  width: fit-content;
+  height: 30px;
+  font-size: large;
+  border-radius: 20px;
+  font-weight: bolder;
+  color: #ffffff;
+  text-shadow: 3px -4px 4px #000000;
+  margin-top: 10px;
+ float: right;
+}
+
+.employeedata2{
+  border: 5px solid #000000;
+  border-radius: 2px;
+  background-color: #00000057;
+  width: 100px;
+  height: 50px;
+  font-size: medium;
+  border-radius: 20px;
+  font-weight: bolder;
+  color: #ffffff;
+  text-shadow: 3px -4px 4px #000000;
+  margin-top: 10px;
+}
+input{
+  width:-webkit-fill-available;
+  background-color:  white;
+  color: blue;
+  border:3px solid black;
+  font-weight: bolder;
+}
+label{
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+}
+.gender{
+  display: inline-flex;
+  justify-content:center;
+}
+.skills{
+  width:100px;
+}
+table{
+  width:-webkit-fill-available;
+  height: 300px;
+}
+
+.isha{
+  text-align: center;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  font-size: large;
+}
+#update{
+  margin-left: 10px;
+}
+
+
+
+
+import React, { useState } from "react";
+// import EmployeeDisplay from "./components/EmployeeDisplay";
+import { employee_data } from "./components/EmployeeData";
+import EmployeeForm from "./components/EmployeeForm";
+import EmployeeRead from "./components/EmployeeRead";
+
+import EmployeePagination from "./components/EmployeePagination";
+import EmployeeFilter from "./components/EmployeeFilter";
+import EditFormData from "./components/EditFormData";
+import './App.css';
+
+// import EmployeeAdd from "./components/EmployeeAdd";
+
+function App(){
+
+  // const [showText, setShowText] = useState(false);
+  // const onClick = () => {setShowText(true)
+  // };
+
+
+
+  const [tableData, settableData] = useState(employee_data); // input data for table
+    const [toggle, setToggle] = useState(null); //for data ids
+   
+    
+    const [searchData, setSearchData] = useState(""); //for filtering data
+    const [editData, setEditData] = useState({
+      // for editing data
+      Firstname:"",
+      LastName:"",
+      Email:"",
+      phoneNumber:"",
+      Gender:"",
+      Department:"",
+      Skills:"",
+      About:"",
+    });
+    const [ord, setord] = useState("asc"); //for sorting
+    const [num, setnum] = useState(1); // No of pages
+    const [pagepost] = useState(10);
+  
+    const Delete = (del) => {
+      const delData = tableData.filter((tbd) => {
+        return del !== tbd.id;
+      });
+      settableData(delData);
+    };
+  
+   
+  
+    const Cancel = () => {
+      setToggle(null);
+    };
+  
+    const Sort = (sort) => {
+      if (ord === "asc") {
+        const sorted = [
+          ...tableData.sort((c, d) => (c[sort] > d[sort] ? 1 : -1)),
+        ];
+        console.log(sorted);
+        settableData(sorted);
+        setord("desc");
+      } else if (ord === "desc") {
+        const sorted = [
+          ...tableData.sort((c, d) => (c[sort] < d[sort] ? 1 : -1)),
+        ];
+        console.log(sorted);
+        settableData(sorted);
+        setord("asc");
+      }
+    };
+    //for Pagination
+    const lp = num * pagepost;
+    const fp = lp - pagepost;
+    const cd = tableData.slice(fp, lp);
+
+    const [showmainData, setshowmainData] = useState(false);
+    const[showaddformData,setshowaddformData]=useState(false);
+    const[showeditformData,setshoweditformData]=useState(false);
+    const Edit = (employee_data) => {
+      // for opening the editable row
+      setToggle(employee_data);
+      setEditData(employee_data);
+      setshoweditformData(true);
+      setshowmainData(false)
+    };
+    
+    function clickeditemployee(){
+      return(
+        setshowaddformData(true),
+        setshowmainData(false)
+      )
+    }
+
+    function clickedDashboard(){
+      return(
+        setshowmainData(true),
+        setshowaddformData(false),
+        setshoweditformData(false)
+
+      )
+    }
+    
+    return (
+      
+          <>
+            <div>
+              <div >
+                <button className="employeedata" onClick={clickedDashboard} > Please Click here to see the Employee Dashboard</button>
+                {showmainData ? <>
+                <div><button className="employeedata1"  onClick={clickeditemployee}>Add Employee</button></div><EmployeeFilter searchData={searchData} setSearchData={setSearchData}/> 
+                <table>
+                    <thead>
+                      <tr>
+                        <th id="tr" onClick={() => Sort("Firstname")}>
+                        Firstname
+                        </th>
+                        <th id="tr" onClick={() => Sort("LastName")}>
+                        LastName
+                        </th>
+                        <th id="tr" onClick={() => Sort("Email")}>
+                        Email
+                        </th>
+                       
+                        <th id="tr" onClick={() => Sort("Gender")}>
+                        Gender
+                        </th>
+                        <th id="tr" onClick={() => Sort("Department")}>
+                        Department
+                        </th>
+                        <th id="tr" onClick={() => Sort("Skills")}>
+                        Skills
+                        </th>
+      
+                       
+                        <th id="tr">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cd
+                        .filter((val) => {
+                          if (searchData === "") {
+                            return val;
+                          } else if (
+                            val.Firstname.toLowerCase().includes(searchData.toLowerCase())
+                          ) {
+                            return val;
+                          }
+                        })
+                        .map((employee_data) => {
+                          return (
+                            <>
+                              {toggle === employee_data ? (
+                              
+                                <EditFormData  key={employee_data.id}
+                                tableData={tableData}
+                                settableData={settableData}
+                                Cancel={Cancel}
+                                seteditData={setEditData}
+                                editData={editData} />
+                              ) : (
+                                <EmployeeRead
+                                  key={employee_data.id}
+                                  employee_data={employee_data}
+                                  cd={cd}
+                                  Edit={Edit}
+                                  Delete={Delete}
+                                />
+                              )}
+                            </>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+                  <EmployeePagination
+                  num={num}
+                  setnum={setnum}
+                  tableData={tableData}
+                  pagepost={pagepost}
+                />
+               
+                </>
+:null}
+
+
+{showaddformData ?   <>
+  <EmployeeForm tableData={tableData} settableData={settableData} 
+       /> 
+       </>
+:null}
+
+{showeditformData ?   <>
+  <EditFormData  key={employee_data.id}
+       tableData={tableData}
+       settableData={settableData}
+       Cancel={Cancel}
+       seteditData={setEditData}
+       editData={editData} />
+       </>
+:null}
+
+                {/* <EmployeeFilter searchData={searchData} setSearchData={setSearchData}/> */}
+                
+                <form>
+                  {/* <table>
+                    <thead>
+                      <tr>
+                        <th id="tr" onClick={() => Sort("Firstname")}>
+                        Firstname
+                        </th>
+                        <th id="tr" onClick={() => Sort("LastName")}>
+                        LastName
+                        </th>
+                        <th id="tr" onClick={() => Sort("Email")}>
+                        Email
+                        </th>
+                       
+                        <th id="tr" onClick={() => Sort("Gender")}>
+                        Gender
+                        </th>
+                        <th id="tr" onClick={() => Sort("Department")}>
+                        Department
+                        </th>
+                        <th id="tr" onClick={() => Sort("Skills")}>
+                        Skills
+                        </th>
+      
+                       
+                        <th id="tr">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cd
+                        .filter((val) => {
+                          if (searchData === "") {
+                            return val;
+                          } else if (
+                            val.Firstname.toLowerCase().includes(searchData.toLowerCase())
+                          ) {
+                            return val;
+                          }
+                        })
+                        .map((employee_data) => {
+                          return (
+                            <>
+                              {toggle === employee_data ? (
+                              
+                                <EditFormData  key={employee_data.id}
+                                tableData={tableData}
+                                settableData={settableData}
+                                Cancel={Cancel}
+                                seteditData={setEditData}
+                                editData={editData} />
+                              ) : (
+                                <EmployeeRead
+                                  key={employee_data.id}
+                                  employee_data={employee_data}
+                                  cd={cd}
+                                  Edit={Edit}
+                                  Delete={Delete}
+                                />
+                              )}
+                            </>
+                          );
+                        })}
+                    </tbody>
+                  </table> */}
+                </form>
+      
+                {/* <EmployeePagination
+                  num={num}
+                  setnum={setnum}
+                  tableData={tableData}
+                  pagepost={pagepost}
+                /> */}
+      <div>
+      {/* <button className="employeedata1" >Add Employee</button> */}
+
+        <>
+        
+        {/* <EmployeeForm tableData={tableData} settableData={settableData} 
+       />  */}
+        {/* <EditFormData  key={employee_data.id}
+       tableData={tableData}
+       settableData={settableData}
+       Cancel={Cancel}
+       seteditData={setEditData}
+       editData={editData} /> */}
+      
+       </>
+
+      </div>
+               
+
+                {/* <EmployeeForm tableData={tableData} settableData={settableData}  /> */}
+                {/* <EmployeeAdd employee_data={employee_data}  /> */}
+              </div>
+              <div>
+                {/* <EditFormData  key={employee_data.id}
+                                tableData={tableData}
+                                settableData={settableData}
+                                Cancel={Cancel}
+                                seteditData={setEditData}
+                                editData={editData} /> */}
+
+
+              </div>
+        
+            </div>
+          </>
+        );
+}
+
+export default App;
