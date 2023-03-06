@@ -1,0 +1,29 @@
+App.js
+
+
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <label >NODEJS ASSIGNMENT</label>
+      <br></br>
+    <button class="btn btn-info">Create a Folder</button>
+    <br></br>
+    <button class="btn btn-info">Create a File</button>
+    <br></br>
+    <button class="btn btn-info">Write the data into a file</button>
+    <br></br>
+    <button class="btn btn-info">Append the data into a file</button>
+    <br></br>
+    <button class="btn btn-info">Read the data from a file</button>
+    <br></br>
+    <button class="btn btn-info">Delete the file</button>
+    <br></br>
+    <button class="btn btn-info">Display the contents of the file</button>
+    </div>
+  );
+}
+
+export default App;
