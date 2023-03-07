@@ -1,0 +1,404 @@
+app.js
+
+
+
+import './App.css';
+import axios from "axios";
+import React,{useState} from "react";
+
+
+function App() {
+  
+const createfolder=async(e)=>{
+  let inputvalue=document.getElementById("input").value;
+  console.log(inputvalue)
+  let localhostnumber="http://localhost:8003/createfolder";
+  let createfolderresult=document.getElementById("createfolderresult1");
+  try{
+    let result= await axios.post(localhostnumber,{inputvalue : inputvalue});
+    createfolderresult.innerHTML=result.data
+    // console.log(result.data)
+  }catch(error){
+    console.log(error);
+
+  }
+}
+
+
+const createfile=async(e)=>{
+  setshowcreatefilebutton(true);
+ console.log("hello");
+  let inputvalue=document.getElementById("input").value;
+  console.log(inputvalue);
+  let localhostnumber="http://localhost:8003/createfile";
+  console.log(localhostnumber)
+  let createfileresult=document.getElementById("createfileresult");
+console.log(createfileresult)
+  try{
+    let result =  await axios.post(localhostnumber, { inputvalue: inputvalue });
+    createfileresult.innerHTML=result.data
+    console.log(result.data)
+   }catch(error){
+    console.log(error);
+  }
+
+}
+
+const[showcreatefilebutton,setshowcreatefilebutton]=useState(false);
+
+// const writeintofile=async(e)=>{
+//   let inputvalue=document.getElementById("input");
+//   console.log(inputvalue);
+//   let localhostnumber="http://localhost:8003/writeintofile";
+//   let createforesult=document.getElementById("createfolderresult3");
+//   try
+//   {
+
+//   }catch(error){
+//     console.log(error)
+//   }
+// }
+
+// const appenddataintofile=async(e)=>{
+//   try{
+
+//   }catch(error){
+//     console.log(error)
+//   }
+// }
+
+// const readdatafromfile=async(e)=>{
+//   try{
+
+//   }catch(error)
+//   {
+//     console.log(error)
+//   }
+// }
+  
+// const deletefile=async(e)=>{
+//   try{
+
+//   }catch(error){
+//     console.log(error)
+//   }
+// }
+
+// const displaycontentoffile=async(e)=>{
+//   try{
+
+//   }
+//     catch(error){
+//       console.log(error)
+//     }
+//   }
+
+  return (
+   <> <div className="App">
+   <label >NODEJS ASSIGNMENT</label>
+   <input type="text" placeholder="Please enter the name " id ="input"/>
+ <button className="btn btn-info" id="folder" onClick={createfolder} >Create a Folder</button>
+ <p className="btn btn-success" id="createfolderresult1"></p>
+ <button className="btn btn-info" onClick={createfile}>Create a File</button>
+ {showcreatefilebutton?<p className="btn btn-success" id="createfileresult"></p>:null}
+ 
+ {/* <button className="btn btn-info" onClick={writeintofile}>Write the data into a file</button>
+ <p className="btn btn-success" id="createfolderresult3"></p>
+ <button className="btn btn-info" onClick={appenddataintofile}>Append the data into a file</button>
+ <button className="btn btn-info" onClick={readdatafromfile}>Read the data from a file</button>
+ <button className="btn btn-info" onClick={deletefile}>Delete the file</button>
+ <button className="btn btn-info" onClick={displaycontentoffile}>Display the contents of the file</button> */}
+ </div></>
+  );
+  }
+
+export default App;
+
+
+server.js
+
+import express from "express";
+import cors from "cors";
+import fs from "fs";
+const server = express();
+server.use(cors());
+server.use(express.json({ extended: true }));
+server.post("/createfolder", (req, res) => {
+  let input = req.body.inputvalue;
+  console.log(true)
+  console.log(input);
+  try {
+    if (!fs.existsSync(input)) {
+      fs.mkdirSync(input);
+      res.send(  " Your folder is successfully created and your folder name is " + input);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+
+
+server.post("/createfile",(req,res)=>{
+    let inputvalue=req.body.inputvalue;
+    console.log(inputvalue);
+    console.log('backendd')
+//     try{
+//         fs.writeFile( ".txt"+inputvalue,function(err){
+//             if (err) throw err;
+//             let dname=inputvalue+".txt is saved"
+//             res.send(dname)
+//         });
+
+//         // res.send(" Your file is successfully created and your file name is" + inputvalue)
+       
+//     }catch(error){
+//     console.log(error);
+// }});
+fs.writeFile( inputvalue+".txt", '',  ()=> {
+    // if (err) throw err;
+    res.send(" Your file is successfully created and your file name is "+  inputvalue )
+  });
+});
+
+// server.post("/writeintofile",(req,res)=>{
+//     let input=req.body.inputvalue;
+//     console.log(input);
+//     try{
+
+//     }catch(error){
+//         console.log(error);
+//     }
+// });
+
+// server.post("/appenddataintofile",(req,res)=>{
+//     let input=req.body.inputvalue;
+//     console.log(input);
+//     try{
+
+//     }catch(error){
+//         console.log(error)
+//     }
+// });
+
+// server.post("/readdatafromfile",(req,res)=>{
+//     input=req.body.inputvalue;
+//     console.log(input);
+//     try{
+
+//     }catch(error){
+//         console.log(error)
+//     }
+// });
+
+// server.post("/deletefile",(req,res)=>{
+//     input=req.body.inputvalue;
+//     console.log(input);
+//     try{
+
+//     }catch(error){
+//         console.log(error)
+//     }
+// });
+
+// server.post("/displaycontentoffile",(req,res)=>{
+//     input=req.body.inputvalue;
+//     console.log(input);
+//     try{
+
+//     }catch(error){
+//         console.log(error)
+//     }
+// })
+
+
+server.listen(8003, () => {
+    console.log("Your server running at port number 8003");
+  });
+  
+  
+  
+  
+  mapp.js
+  
+  import "./App.css";
+import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.css';
+// import ex from "express";<script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossorigin></script>function App() {
+  const makefile = async (e) => {
+    // e.preventDefault();    
+    let input = document.getElementById("input").value;
+    let localHost = "http://localhost:8001/makefile";
+    let display = document.getElementById("display");
+    try {
+     let result =  await axios.post(localHost, { input: input });
+     console.log(result)
+    alert(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const makefolder= async (e) =>{
+    let input = document.getElementById("input").value ; 
+    let localHost = "http://localhost:8001/makefolder";
+    let display = document.getElementById("display");
+    try{
+      let result = await axios.post(localHost , {input : input});
+      display.innerHTML = result.data ;
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+  const writedata = async (e) => {
+    let input = document.getElementById('input').value;
+    let localHost = "http://localhost:8001/writedata";
+    let display = document.getElementById('display');
+    try {
+      let result = await axios.post(localHost , { input : input })
+      display.innerHTML = result.data ; 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const appenddata = async (e) => {
+    let input = document.getElementById('input').value;
+    let localHost = "http://localhost:8001/appenddata";
+    let display = document.getElementById('display');
+    try {
+      let result = await axios.post(localHost , { input :input })
+      display.innerHTML = result.data ; 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const readdata = async (e) => {
+    let input = document.getElementById('input').value;
+    let localHost = "http://localhost:8001/readdata";
+    let display = document.getElementById('display');
+    try {
+      let result = await axios.post(localHost , { input :input })
+      display.innerHTML = result.data ; 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const deletefile = async (e) => {
+    let input = document.getElementById('input').value;
+    let localHost = "http://localhost:8001/deletefile";
+    let display = document.getElementById('display');
+    try {
+      let result = await axios.post(localHost , { input :input })
+      display.innerHTML = result.data ; 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const displayfile = async (e) => {
+    let input = document.getElementById('input').value;
+    let localHost = "http://localhost:8001/displayfile";
+    let display = document.getElementById('display');
+    try {
+      let result = await axios.post(localHost , { input :input })
+      display.innerHTML = result.data ; 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  return (
+    <>      <div className="div"> 
+           <h2>File System In Node</h2>          
+           <label>Enter File Name</label>         
+           <input className='input-group-text'  type="text"  name="text" placeholder="Give Input"  id="input"  ></input>
+           
+            <div className="bdiv">
+            <button className="btn btn-primary"  onClick={makefile} >Create Folder</button>             
+            <button className="btn btn-primary"  onClick={makefolder} >Create File</button>          
+            <button className="btn btn-primary"  onClick={writedata} >Write a Data Into File</button>          
+            <button className="btn btn-primary"  onClick={appenddata} >Append the Data Into File</button>          
+            <button className="btn btn-primary"  onClick={readdata} >Read the Data from File</button>          
+            <button className="btn btn-primary"  onClick={deletefile} >Delete the File</button>          
+            <button className="btn btn-primary"  onClick={displayfile} >Display Content of File</button>          
+            </div>         
+            <p id="display"></p>      
+            </div>    </>  );
+
+export default App;
+
+
+mserver.js
+
+import express from "express";
+import cors from "cors";
+import fs from "fs";
+const app = express();
+app.use(cors());
+app.use(express.json({ extended: true }));
+app.post("/makefile", (req, res) => {
+    let input = req.body.input;
+    console.log(input)
+    fs.writeFile( input+".txt", 'Hello content!', function (err) {
+        if (err) throw err;
+        let dname = input + ".txt is Saved" ;
+        console.log('Saved!');
+        res.send(dname)
+      });
+});
+app.post('/makefolder', (req , res )=>{
+    let input = req.body.input;
+   console.log(input);
+   try {
+    if (!fs.existsSync(input)) {
+      fs.mkdirSync(input);
+      res.send(input+ "Folder is Created")
+    }
+  } catch (err) {
+    console.error(err);
+  }
+});
+app.post('/writedata',(req , res)=>{
+    let input = req.body.input;
+    fs.writeFile('./demo.txt', input, (err) => { 
+        if(err) throw err; 
+        console.log("Data has been written to file successfully."); 
+        res.send("Data has been written to file successfully");
+        }); 
+});
+app.post('/appenddata', (req , res)=>{
+    let input = req.body.input;
+    fs.appendFile('./demo.txt', 'Hello content!', function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+        res.send('Your Data Has Been SuccessFully Appended')
+      });
+})
+app.post('/readdata', (req , res)=>{
+    let input = req.body.input;
+    fs.readFile('./demo.txt', 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        res.send(data);
+      });
+})
+app.post('/deletefile', (req , res)=>{
+    let input = req.body.input;
+    fs.unlink('./100.txt', function (err) {
+        if (err) throw err;
+        res.send('File Deleted')
+      });
+})
+app.post('/displayfile', (req , res)=>{
+    let input = req.body.input;
+    fs.readFile('./demo.txt', 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        res.send(data);
+      });
+})
+app.listen(8001, () => {
+  console.log("listening 8001");
+});
