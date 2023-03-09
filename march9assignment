@@ -1,0 +1,50 @@
+1. Create a collection called “movies” and perform the queries listed below:
+
+1) Add 5 movies to the collection, every movie should include the following properties: 
+
+
+	
+name 
+	
+genre(Horror,thriller,Science Fiction,Drama,Comedy,Art etc.,) 
+	
+rating (out of 10) 
+	
+language
+
+
+2) Write a query that returns all the movies
+
+3) Write a query that returns the three highest rated movies
+
+4) Update the rating of all Comedy movies
+
+5) Write a query to delete movie with least rating.
+
+2. Bug Tracker Application:
+
+
+	
+Create a user form to add bug, it should contain following field: 
+
+
+
+	
+Title 
+	
+Description 
+	
+Time (should auto fill with system date &time) 
+	
+Date (should auto fill with system date &time)
+	
+Assignee
+
+
+
+	
+All Data created should be saved in MySQL
+	
+Build a programming logic such that every bug should be resolved in 3 days, after third day the unresolved bug should be highlighted
+	
+Add one more field to show the leftover days to fix the bug (Total time is 3 days from the day bug is assigned)
