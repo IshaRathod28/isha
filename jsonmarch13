@@ -1,0 +1,149 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+function App() {
+  const [employee, setEmployee] = useState();
+  useEffect(() => {
+    const fetchEmployee = async () => {
+      const response = await axios.get(
+        "http://5c055de56b84ee00137d25a0.mockapi.io/api/v1/employees"
+      );
+      setEmployee(response.data);
+    };
+    fetchEmployee();
+    console.log(employee);
+  }, []);
+  useEffect(() => {
+    console.log(employee);
+  }, [employee]);
+  return (
+    <div>
+      {" "}
+      <h1> Employee </h1>{" "}
+      {employee &&
+        employee.map((item) => (
+          <div>
+             Name: <div>{item.name}</div> <br /> Id:{" "}
+            <div> {item.id} </div> <br /> createdAt:{" "}
+            <div> {item.createdAt} </div> <br />{" "}
+          </div>
+        ))}
+      {" "}
+    </div>
+  );
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import employees from "./Emp.json" assert { type: "json" };
+import Project from "./Project.json" assert {type:"json"};
+import express from "express";
+import cors from "cors";
+const server=express();
+server.use(cors());
+server.use(express.json({extended:true}))
+server.get("/Project/:projectid",(req,res)=>{
+    const temp =req.params.projectid;
+    res.json(Project[temp-1]);
+    console.log((Project));
+});
+server.get("/employees",(req,res)=>{
+    res.json(employees);
+    console.log((employees));
+});
+server.get("/employees/:empid",(req,res)=>{
+    const temp =req.params.empid;
+    res.json(employees[temp-1]);
+    console.log((employees));
+});
+
+server.get("/delete/:empid",(req,res)=>{
+const ans=employees.filter((data)=>{
+    return data.empid!=req.params.empid;
+})
+res.json(ans)
+})
+
+
+// var data = fs.readFileSync('Emp.json');
+// var myObject= JSON.parse(data);
+// let newData = {
+//     "country": "India"
+// }  
+// myObject.push(newData);
+// newData = JSON.stringify(myObject);
+// fs.writeFile('Emp.json', newData, err => {
+//     // error checking
+//     if(err) throw err;
+    
+//     console.log("New data added");
+// });   
+
+
+
+server.listen(8002, () => {
+    console.log("connected to port 8002");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[
+      {
+        "projectid": 1,
+        "projectsr": 1,
+        "projectname": "Employeemanagement",
+        "deadline": "2023-12-12",
+        "version": 0.1
+      },
+      {
+        "projectid": 3,
+        "projectsr": 2,
+        "projectname": "Customermanagement",
+        "deadline": "2023-1-13",
+        "version": 0.2
+      },
+      {
+        "projectid": 3,
+        "projectsr": 1,
+        "projectname": "servermanagement",
+        "deadline": "2023-12-14",
+        "version": 0.1
+      },
+      {
+        "projectid": 2,
+        "projectsr": 2,
+        "projectname": "ordermanagement",
+        "deadline": "2023-1-15",
+        "version": 0.2
+      }
+    ]
+  
+  
+  
+  
+  
+  [{"empid":1,"empname":"Isha","projectid":3,"gender":"female","department":"Full Stack"},{"empid":2,"empname":"Nikita","projectid":1,"gender":"female","department":"Full Stack"},{"empid":3,"empname":"Chirag","projectid":1,"gender":"Male","department":".net"},{"country":"India"},{"country":"India"},{"country":"India"},{"country":"India"},{"country":"India"},{"country":"India"},{"country":"India"},{"country":"India"},{"country":"India"},{"country":"India"}]
